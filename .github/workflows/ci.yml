@@ -60,7 +60,16 @@ jobs:
           script: |
 
             sudo yum update -y
-            sudo yum install docker git docker-buildx -y
+
+            sudo yum install docker git -y
+
+            mkdir -p ~/.docker/cli-plugins/
+
+            curl -SL https://github.com/docker/buildx/releases/download/v0.17.1/buildx-v0.17.1.linux-amd64 \
+            -o ~/.docker/cli-plugins/docker-buildx
+
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
             sudo service docker start
 
             sudo usermod -aG docker ec2-user
