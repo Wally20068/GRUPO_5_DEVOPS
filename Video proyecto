@@ -1,0 +1,13 @@
+# Video demostrativo del proyecto
+
+- Configuración de EC2 y RDS en AWS
+- Configuración de Docker y Docker Compose
+- Implementación de CI/CD con GitHub Actions
+- Ejecución de la API Spring Boot
+- Pruebas del endpoint en Postman
+- Despliegue automático del proyecto
+
+Enlace al video del funcionamiento del proyecto DevOps:
+
+https://drive.google.com/file/d/1L4IPiwLnsHgl3fwZcPnoLSzWMfIbZVtB/view?usp=sharing
+
