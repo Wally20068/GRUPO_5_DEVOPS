@@ -6,6 +6,7 @@ on:
       - main
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
 
@@ -50,5 +51,25 @@ jobs:
     needs: test
 
     steps:
-      - name: Deploy placeholder
-        run: echo "Deploy hacia EC2 pendiente"
+      - name: Deploy EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            sudo yum update -y
+            sudo yum install docker git -y
+            sudo service docker start
+            sudo usermod -aG docker ec2-user
+
+            cd /home/ec2-user
+
+            if [ ! -d "GRUPO_5_DEVOPS" ]; then
+              git clone https://github.com/Wally20068/GRUPO_5_DEVOPS.git
+            fi
+
+            cd GRUPO_5_DEVOPS/user-service-ci-cd-master
+
+            docker compose down
+            docker compose up --build -d
