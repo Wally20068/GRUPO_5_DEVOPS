@@ -69,7 +69,7 @@ jobs:
               git clone https://github.com/Wally20068/GRUPO_5_DEVOPS.git
             fi
 
-            cd GRUPO_5_DEVOPS/user-service-ci-cd-master
+            cd GRUPO_5_DEVOPS
 
             docker compose down
             docker compose up --build -d
